@@ -1,10 +1,8 @@
-console.log("APP LOADED")
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
 // Production-clean version for Vercel deployment
 // Paste your Microsoft Form URL below after creating the form.
-const SUBMISSION_FORM_URL = "";
 const GAME_DURATION_SECONDS = 25 * 60;
 
 const DEFAULT_MISSIONS = [
@@ -529,7 +527,7 @@ export default function AspireAIEscapeQuestProductionClean() {
           <div>
             <div className="mb-2 inline-flex rounded-full border border-cyan-300/30 bg-cyan-400/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.35em] text-cyan-200">ASPIRE DAY</div>
             <h1 className="text-4xl font-black tracking-tight md:text-6xl">AGENT AI: MISSION ZERO</h1>
-            <p className="mt-2 max-w-2xl text-sm text-slate-300 md:text-base">Solve all mission files, activate the AI core, then submit a final screenshot for score validation.</p>
+            <p className="mt-2 max-w-2xl text-sm text-slate-300 md:text-base">Solve all mission files, activate the AI core, then post the final screenshot and copied result text in the Teams Submission Channel.</p>
           </div>
           <div className="grid grid-cols-3 gap-3 text-center">
             <div className="rounded-2xl bg-slate-900/80 p-4"><div className="text-xs text-slate-400">Timer</div><div className="text-2xl font-black text-orange-300">{formatTime(secondsLeft)}</div></div>
@@ -543,7 +541,7 @@ export default function AspireAIEscapeQuestProductionClean() {
             <div className="glass rounded-3xl p-8" style={{ animation: "pulseGlow 3s infinite" }}>
               <div className="mb-6 text-7xl">🕵️‍♂️🤖</div>
               <h2 className="mb-4 text-3xl font-black text-cyan-100">Mission Briefing</h2>
-              <p className="mb-5 text-lg leading-relaxed text-slate-200">Your team is now an AI field unit. Decode every mission file in sequence, unlock the AI core, screenshot the completion card, and upload the screenshot through the event submission form.</p>
+              <p className="mb-5 text-lg leading-relaxed text-slate-200">Your team is now an AI field unit. Decode every mission file in sequence, unlock the AI core, take a screenshot of the completion card, copy the result text, and post both in the Teams Submission Channel.</p>
               <div className="grid gap-3 md:grid-cols-4">
                 <div className="rounded-2xl bg-slate-950/60 p-4"><b>Missions:</b><br />{missions.length}</div>
                 <div className="rounded-2xl bg-slate-950/60 p-4"><b>Max Raw Score:</b><br />{maxScore}</div>
@@ -611,14 +609,35 @@ export default function AspireAIEscapeQuestProductionClean() {
               <div className="rounded-2xl bg-slate-950/70 p-5"><div className="text-sm text-slate-400">Time Left</div><div className="text-4xl font-black text-orange-300">{formatTime(secondsLeft)}</div></div>
               <div className="rounded-2xl bg-slate-950/70 p-5"><div className="text-sm text-slate-400">Missions</div><div className="text-4xl font-black text-purple-300">{missions.length}</div></div>
             </div>
+                        </div>
             <div className="mx-auto mb-6 max-w-3xl rounded-3xl border border-cyan-300/30 bg-slate-950/80 p-5">
-              <div className="mb-2 text-sm font-bold uppercase tracking-[0.25em] text-cyan-200">Screenshot Required</div>
-              <p className="text-lg text-slate-200">Capture this full screen and upload it through the event submission form. Screenshot proof is required for judging.</p>
-            </div>
-            <div className="flex flex-col justify-center gap-3 sm:flex-row">
-              <button onClick={copyResult} className="rounded-2xl bg-yellow-300 px-8 py-4 font-black text-slate-950 hover:bg-yellow-200">Copy Result Text</button>
-              {SUBMISSION_FORM_URL ? <a href={SUBMISSION_FORM_URL} target="_blank" rel="noreferrer" className="rounded-2xl bg-emerald-400 px-8 py-4 font-black text-slate-950 hover:bg-emerald-300">Open Submission Form</a> : <button className="rounded-2xl bg-slate-700 px-8 py-4 font-black text-slate-300" disabled>Submission Link Pending</button>}
-            </div>
+  <div className="mb-2 text-sm font-bold uppercase tracking-[0.25em] text-cyan-200">
+    Screenshot Submission Required
+  </div>
+
+  <p className="text-lg leading-relaxed text-slate-200">
+    📸 Take a screenshot of this complete screen.
+    <br /><br />
+
+    📋 Click <strong>Copy Result Text</strong>.
+    <br /><br />
+
+    📢 Post BOTH the screenshot and copied result text in the
+    <strong> Teams Submission Channel</strong>.
+    <br /><br />
+
+    🏆 Judges will validate submissions and update the live leaderboard.
+  </p>
+</div>
+
+<div className="flex justify-center">
+  <button
+    onClick={copyResult}
+    className="rounded-2xl bg-yellow-300 px-8 py-4 font-black text-slate-950 hover:bg-yellow-200"
+  >
+    📋 Copy Result Text
+  </button>
+</div>
             {message && <div className="mt-4 rounded-xl bg-slate-950/70 p-3 text-sm font-bold">{message}</div>}
           </section>
         )}
