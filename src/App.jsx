@@ -609,7 +609,6 @@ export default function AspireAIEscapeQuestProductionClean() {
               <div className="rounded-2xl bg-slate-950/70 p-5"><div className="text-sm text-slate-400">Time Left</div><div className="text-4xl font-black text-orange-300">{formatTime(secondsLeft)}</div></div>
               <div className="rounded-2xl bg-slate-950/70 p-5"><div className="text-sm text-slate-400">Missions</div><div className="text-4xl font-black text-purple-300">{missions.length}</div></div>
             </div>
-                        </div>
             <div className="mx-auto mb-6 max-w-3xl rounded-3xl border border-cyan-300/30 bg-slate-950/80 p-5">
   <div className="mb-2 text-sm font-bold uppercase tracking-[0.25em] text-cyan-200">
     Screenshot Submission Required
